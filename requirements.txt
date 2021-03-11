@@ -1,0 +1,5 @@
+# Django
+django==3.1.7
+
+# Linting
+flake8==3.8.4
