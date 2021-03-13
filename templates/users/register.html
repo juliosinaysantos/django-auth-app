@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ block.super }} Register {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-7 col-lg-6 col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title text-center">Sign Up</h1>
+                <form action="" method="POST" class="mt-5">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" class="form-control">
+                        <small class="invalid-feedback">Invalid</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email">Enter your Email</label>
+                        <input type="text" name="email" id="email" class="form-control">
+                        <small class="invalid-feedback">Invalid</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Choose your password</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                        <small class="invalid-feedback">Invalid</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password_confirmation">Confirm your password</label>
+                        <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                        <small class="invalid-feedback">Invalid</small>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning btn-lg">Create account</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <small>Already have an account? <a href="{% url 'users:login' %}">Login</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

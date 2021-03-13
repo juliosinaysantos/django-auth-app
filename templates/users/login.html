@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ block.super }} Login {% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-7 col-lg-6 col-xl-4">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="card-title text-center">Sign In</h1>
+                <form action="" method="POST" class="mt-5">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="login">Username or Email</label>
+                        <input type="text" name="login" id="login" class="form-control">
+                        <small class="invalid-feedback">Invalid</small>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password">Enter your password</label>
+                        <input type="password" name="password" id="password" class="form-control">
+                        <small class="invalid-feedback">Invalid</small>
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" name="rememberme" id="rememberme">
+                        <label class="form-check-label" for="rememberme">Remember me</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <small>Do you need an account? <a href="{% url 'users:register' %}">Register</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
