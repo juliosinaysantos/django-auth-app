@@ -10,15 +10,31 @@
                 <h1 class="card-title text-center">Sign In</h1>
                 <form action="" method="POST" class="mt-5">
                     {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
                     <div class="mb-3">
                         <label for="login">Username or Email</label>
-                        <input type="text" name="login" id="login" class="form-control">
-                        <small class="invalid-feedback">Invalid</small>
+                        <input
+                            class="form-control {% if form.login.errors %}is-invalid{% endif %}"
+                            id="login"
+                            name="login"
+                            type="text"
+                            value="{% firstof form.login.value '' %}"
+                        >
+                        <small class="invalid-feedback">
+                            {% if form.login.errors %}{{ form.login.errors.0 }}{% endif %}
+                        </small>
                     </div>
                     <div class="mb-3">
                         <label for="password">Enter your password</label>
-                        <input type="password" name="password" id="password" class="form-control">
-                        <small class="invalid-feedback">Invalid</small>
+                        <input
+                            class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+                            id="password"
+                            name="password"
+                            type="password"
+                        >
+                        <small class="invalid-feedback">
+                            {% if form.password.errors %}{{ form.password.errors.0 }}{% endif %}
+                        </small>
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" name="rememberme" id="rememberme">

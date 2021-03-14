@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 # Authentication
 AUTH_USER_MODEL = 'users.User'
 
+AUTHENTICATION_BACKENDS = ['users.backends.ModelBackend']
+
+LOGIN_URL = 'users:login'
+
 # Application definition
 
 DJANGO_APPS = [
