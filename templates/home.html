@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %} {{ block.super }} Home {% endblock %}
+
+{% block content %}
+<div class="text-center">
+    <h1>Welcome To Auth App</h1>
+    <span class="fst-italic text-muted">This app is for learning the flow of authentication in Django & beyond.</span>
+    <p class="mt-4">Get started:</p>
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-5 col-lg-4">
+            {% if user.is_authenticated %}
+                <a class="btn btn-dark btn-lg d-block" href="{% url 'users:profile' %}">Visit your profile</a>
+            {% else %}
+                <a class="btn btn-outline-dark btn-lg d-block" href="{% url 'users:login' %}">Login</a>
+                <span class="my-2 d-block">or</span>
+                <a class="btn btn-warning btn-lg d-block" href="{% url 'users:register' %}">Create an account</a>
+            {% endif %}
+            </div>
+        </div>
+</div>
+{% endblock %}

@@ -30,6 +30,10 @@ ALLOWED_HOSTS = []
 # Authentication
 AUTH_USER_MODEL = 'users.User'
 
+AUTHENTICATION_BACKENDS = ['users.backends.ModelBackend']
+
+LOGIN_URL = 'users:login'
+
 # Application definition
 
 DJANGO_APPS = [
@@ -64,7 +68,9 @@ ROOT_URLCONF = 'core.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            BASE_DIR / 'templates'
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
