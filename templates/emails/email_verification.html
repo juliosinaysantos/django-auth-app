@@ -1,0 +1,14 @@
+{% extends 'emails/base.html' %}
+
+{% block content %}
+    <h1>Almost done, @{{ user.username }}!</h1>
+    <div>
+        <p>To complete your registration process, we just need to verify your email address: <strong>{{ user.email }}</strong>.</p>
+        <a href="{{ url }}">Verify email address</a>
+    </div>
+    <div>
+        <p>Once verified, you can start exploring your profile.</p>
+        <p>Button not working? Copy and paste the following link into your browser:</p>
+        <span>{{ url }}</span>
+    </div>
+{% endblock %}

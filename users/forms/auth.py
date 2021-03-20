@@ -1,3 +1,5 @@
+import secrets
+
 from django import forms
 
 from users.models import User
@@ -31,6 +33,8 @@ class RegisterForm(forms.ModelForm):
     def save(self, commit=True):
         user = super().save(commit=False)
         user.set_password(user.password)
+
+        user.email_verification_token = secrets.token_urlsafe(16)
         if commit:
             user.save()
         return user

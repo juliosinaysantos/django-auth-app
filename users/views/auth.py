@@ -3,10 +3,10 @@ from django.contrib.auth import logout, authenticate, login
 from django.utils.http import is_safe_url
 from django.shortcuts import render, redirect, resolve_url
 from django.contrib import messages
-from django.http import HttpResponse
 
 from users.forms import LoginForm, RegisterForm
 from users.decorators import guest_only
+from users.utils import send_user_email_verification
 
 
 @guest_only
@@ -14,7 +14,10 @@ def register_view(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+
+            send_user_email_verification(request, user)
+
             messages.success(request, 'Your account has been created!')
             return redirect('users:login')
     else:

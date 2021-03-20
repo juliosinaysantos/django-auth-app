@@ -30,7 +30,10 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('groups', 'user_permissions')
         }),
         ('Dates', {
-            'fields': ('created_at', 'updated_at', 'deleted_at', 'last_login')
+            'fields': ('email_verified_at', 'created_at', 'updated_at', 'deleted_at', 'last_login')
+        }),
+        ('Tokens', {
+            'fields': ('email_verification_token',)
         }),
     )
     add_fieldsets = (
@@ -38,7 +41,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('username', 'email', 'password1', 'password2')
         }),
     )
-    readonly_fields = ('created_at', 'updated_at', 'last_login')
+    readonly_fields = ('email_verification_token', 'created_at', 'updated_at', 'last_login')
 
     inlines = [ProfileInline]
 
