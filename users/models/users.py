@@ -14,6 +14,9 @@ class User(AbstractUser, BaseModel):
     last_name = None
     date_joined = None
 
+    email_verified_at = models.DateTimeField('email verified at', null=True, blank=True)
+    email_verification_token = models.CharField('email verification token', max_length=32, blank=True)
+
     def __str__(self):
         return f'@{self.username}'
 

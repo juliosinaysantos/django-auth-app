@@ -4,3 +4,4 @@ from .auth import (
     logout_view as logout
 )
 from .profile import profile
+from .email import unverified_email, verify_email

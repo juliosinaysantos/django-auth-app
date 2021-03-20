@@ -34,6 +34,11 @@ AUTHENTICATION_BACKENDS = ['users.backends.ModelBackend']
 
 LOGIN_URL = 'users:login'
 
+# Email config
+
+# For development only.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Application definition
 
 DJANGO_APPS = [
