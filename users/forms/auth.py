@@ -38,3 +38,23 @@ class RegisterForm(forms.ModelForm):
         if commit:
             user.save()
         return user
+
+
+class PasswordResetForm(forms.Form):
+    email = forms.EmailField()
+
+
+class ChangePasswordForm(forms.Form):
+    password = forms.CharField(min_length=8)
+    password_confirmation = forms.CharField(min_length=8)
+
+    def clean_password_confirmation(self):
+        password = self.cleaned_data.get('password')
+        password_confirmation = self.cleaned_data.get('password_confirmation')
+
+        if password != password_confirmation:
+            raise forms.ValidationError(
+                'Password do not match',
+                code='password_confirmation',
+            )
+        return password_confirmation
