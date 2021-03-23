@@ -7,6 +7,8 @@ from users.views import (
     profile,
     unverified_email,
     verify_email,
+    password_reset,
+    new_password
 )
 
 app_name = 'users'
@@ -17,4 +19,6 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('unverified-email/', unverified_email, name='unverified-email'),
     path('verify-email/', verify_email, name='verify-email'),
+    path('password-reset/', password_reset, name='password-reset'),
+    path('password-reset/<str:token>/', new_password, name='new-password')
 ]
