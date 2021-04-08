@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} {{ block.super }} Account settings (@{{ user.username }}) {% endblock %}
+
+{% block scripts %}
+    <script src="https://unpkg.com/vue@next"></script>
+{% endblock %}
+
+{% block content %}
+    {% verbatim %}
+    <div id="app">
+        <h1>{{ page }}</h1>
+    </div>
+    {% endverbatim %}
+{% endblock %}
+
+{% block bottom_scripts %}
+<script src="{% static 'settings/js/main.js' %}"></script>
+{% endblock %}
