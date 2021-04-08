@@ -7,3 +7,4 @@ from .auth import (
 )
 from .profile import profile
 from .email import unverified_email, verify_email
+from .account_settings import settings
